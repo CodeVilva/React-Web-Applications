@@ -1,0 +1,53 @@
+body {
+  font-family: inter, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.stopwatch {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  background-color: royalblue;
+  border: 4px solid black;
+  border-radius: 8px;
+}
+
+h1 {
+  color: white;
+}
+
+.display {
+  height: 60px;
+  background-color: aliceblue;
+  width: 100%;
+  font-size: 24px;
+  border: 2px solid black;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 10vh;
+}
+.buttons{
+    display: flex;
+    gap: 5px;
+}
+button {
+  padding: 15px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2e2e2e;
+}
