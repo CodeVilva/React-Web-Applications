@@ -1,66 +1,46 @@
 import { useState } from "react";
+import TodoForm from "./components/TodoForm.jsx";
+import TodoStats from "./components/TodoStats.jsx";
+import TodoList from "./components/TodoList.jsx";
 import "./App.css";
 
 function App() {
-  const [text, setText] = useState("");
   const [todos, setTodos] = useState([]);
 
-  const toggleTask = (id) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+  function addTodo(text) {
+    setTodos((prev) => [
+      ...prev,
+      { id: Date.now(), text, completed: false }
+    ]);
+  }
+
+  function toggleTodo(id) {
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
     );
-  };
+  }
 
-  const removeTask = (id) => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
-  };
-
-  const addTask = () => {
-    if (!text.trim()) return;
-    const newTodo = { id: Date.now(), text: text.trim(), completed: false };
-    setTodos((prev) => [...prev, newTodo]);
-    setText("");
-  };
-
-  const completedCount = todos.filter((t) => t.completed).length;
+  function deleteTodo(id) {
+    setTodos((prev) => prev.filter((t) => t.id !== id));
+  }
 
   return (
-    <main className="app">
-      <h1 className="app-title">Todo Task App</h1>
+    <div className="app">
+      <header className="app-header">
+        <h1>Todo</h1>
+        <p className="subtitle">Focus on what matters — small wins every day.</p>
+      </header>
 
-      <div className="task-input">
-        <input
-          type="text"
-          placeholder="Add a new task"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          className="input"
-          onKeyDown={(e) => e.key === "Enter" && addTask()}
-        />
-        <button className="btn primary" onClick={addTask}>Add Task</button>
-      </div>
+      <main className="app-main">
+        <TodoForm onAddTodo={addTodo} />
+        <TodoStats todos={todos} />
+        <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
+      </main>
 
-      <div className="stats">
-        <p>
-          <strong>Total:</strong> {todos.length} &nbsp;|&nbsp; <strong>Completed:</strong> {completedCount} &nbsp;|&nbsp; <strong>Incomplete:</strong> {todos.length - completedCount}
-        </p>
-      </div>
-
-      <section className="tasks">
-        {todos.map((todo) => (
-          <div key={todo.id} className={`todo ${todo.completed ? "completed" : ""}`}>
-            <div className="todo-info">
-              <p className="todo-text">{todo.text}</p>
-              <p className="todo-status">{todo.completed ? "Completed" : "Not Completed"}</p>
-            </div>
-            <div className="todo-actions">
-              <button className="btn" onClick={() => toggleTask(todo.id)}>{todo.completed ? "Undo" : "Complete"}</button>
-              <button className="btn danger" onClick={() => removeTask(todo.id)}>Remove</button>
-            </div>
-          </div>
-        ))}
-      </section>
-    </main>
+      <footer className="app-footer">
+        <small>{todos.length === 0 ? "No tasks yet" : `${todos.length} tasks`}</small>
+      </footer>
+    </div>
   );
 }
 
