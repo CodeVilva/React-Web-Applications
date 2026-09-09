@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem.jsx";
 
-export default function TodoList({ todos = [], onToggle, onDelete }) {
+export default function TodoList({ todos = [], setImportant, onToggle, onDelete }) {
   if (todos.length === 0) {
     return <p className="empty">You're all caught up — add a task to get started.</p>;
   }
@@ -8,7 +8,7 @@ export default function TodoList({ todos = [], onToggle, onDelete }) {
   return (
     <ul className="todo-list" aria-live="polite">
       {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} onToggle={onToggle} onDelete={onDelete} />
+        <TodoItem key={todo.id} todo={todo} onImportant={setImportant} onToggle={onToggle} onDelete={onDelete} />
       ))}
     </ul>
   );

@@ -1,4 +1,4 @@
-export default function TodoItem({ todo, onToggle, onDelete }) {
+export default function TodoItem({ todo, onImportant, onToggle, onDelete }) {
   return (
     <li className={`todo-item ${todo.completed ? "completed" : ""}`}>
       <label className="todo-left">
@@ -12,6 +12,9 @@ export default function TodoItem({ todo, onToggle, onDelete }) {
       </label>
 
       <div className="todo-actions">
+        <button className={`btn ${todo.important ? 'bgChange' : ''}`} onClick={() => onImportant(todo.id)} aria-label="Toggle">
+          ⭐
+        </button>
         <button className="btn" onClick={() => onToggle(todo.id)} aria-label="Toggle">
           {todo.completed ? "Undo" : "Done"}
         </button>
