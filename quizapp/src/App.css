@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f4f7;
+  color: #222;
+}
+
+/* Main quiz container */
+.quiz-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 35px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.quiz-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 32px;
+}
+
+/* Question counter */
+.quiz-container > p {
+  text-align: center;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* Question */
+.quiz-container h2 {
+  margin-bottom: 25px;
+  line-height: 1.4;
+  font-size: 22px;
+}
+
+/* Options */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* All buttons */
+button {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Option hover */
+.options button:hover {
+  border-color: #333;
+  background: #f5f5f5;
+}
+
+/* Next / Finish button */
+.quiz-container > button {
+  margin-top: 25px;
+  border: none;
+  background: #222;
+  color: white;
+  font-weight: bold;
+}
+
+/* Next button hover */
+.quiz-container > button:hover {
+  background: #444;
+}
+
+/* Score */
+.quiz-container p:last-child {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* Result screen */
+.quiz-container h1 + h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .quiz-container {
+    width: 95%;
+    margin: 30px auto;
+    padding: 25px 20px;
+  }
+
+  .quiz-container h1 {
+    font-size: 26px;
+  }
+
+  .quiz-container h2 {
+    font-size: 19px;
+  }
+}
