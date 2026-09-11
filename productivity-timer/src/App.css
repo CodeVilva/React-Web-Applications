@@ -1,0 +1,337 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0b0b0f;
+  color: #ffffff;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 60px 30px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(110, 70, 255, 0.12), transparent 30%),
+    radial-gradient(circle at 80% 90%, rgba(255, 190, 50, 0.08), transparent 30%),
+    #0b0b0f;
+}
+
+/* HEADER */
+
+.header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #8d8d98;
+  margin-bottom: 12px;
+}
+
+.header h1 {
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.subtitle {
+  margin-top: 12px;
+  color: #858590;
+  font-size: 15px;
+}
+
+/* TIMER CONTAINER */
+
+.timer-container {
+  width: min(1050px, 100%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+/* CARD */
+
+.timer-card {
+  position: relative;
+  padding: 30px;
+  border: 1px solid #24242c;
+  border-radius: 24px;
+  background: rgba(20, 20, 26, 0.85);
+  transition: 0.3s ease;
+}
+
+.timer-card.active {
+  border-color: #6552d9;
+  box-shadow: 0 0 40px rgba(101, 82, 217, 0.12);
+}
+
+.break-card.active {
+  border-color: #b18a35;
+  box-shadow: 0 0 40px rgba(177, 138, 53, 0.1);
+}
+
+/* CARD HEADER */
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-header > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-header h2 {
+  font-size: 20px;
+}
+
+.timer-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #262432;
+  color: #a99aff;
+}
+
+.break-card .timer-icon {
+  color: #e4b957;
+  background: #302a1c;
+}
+
+.active-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #29243d;
+  color: #b9adff;
+}
+
+.break-card .active-label {
+  background: #3a321f;
+  color: #e6c46b;
+}
+
+/* TIMER */
+
+.time-display {
+  margin: 45px 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: clamp(70px, 9vw, 105px);
+  font-weight: 600;
+  letter-spacing: -5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-display .colon {
+  margin: 0 6px;
+  color: #555560;
+}
+
+.timer-state {
+  text-align: center;
+  color: #777781;
+  font-size: 14px;
+}
+
+/* CUSTOM TIME */
+
+.custom-time {
+  margin-top: 35px;
+  padding-top: 22px;
+  border-top: 1px solid #292930;
+}
+
+.custom-time p {
+  color: #777781;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-input {
+  position: relative;
+  flex: 1;
+}
+
+.time-input input {
+  width: 100%;
+  height: 45px;
+  padding: 0 38px 0 12px;
+
+  border: 1px solid #303039;
+  border-radius: 10px;
+  outline: none;
+
+  background: #111116;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.time-input input:focus {
+  border-color: #6552d9;
+}
+
+.time-input span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 10px;
+  color: #666671;
+}
+
+.input-colon {
+  color: #555560;
+}
+
+.set-button {
+  height: 45px;
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #27233b;
+  color: #c1b8ff;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.set-button:hover {
+  background: #342e4e;
+}
+
+/* CONTROLS */
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.controls button {
+  height: 48px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary-button {
+  flex: 1;
+  border: none;
+  background: #6653dc;
+  color: white;
+  font-weight: 600;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #7563eb;
+  transform: translateY(-1px);
+}
+
+.primary-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.secondary-button {
+  width: 100px;
+  border: 1px solid #303039;
+  background: transparent;
+  color: #8e8e98;
+}
+
+.secondary-button:hover {
+  border-color: #555560;
+  color: white;
+}
+
+/* STATUS */
+
+.cycle-status {
+  width: fit-content;
+  margin: 30px auto 0;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #777781;
+  font-size: 12px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6653dc;
+}
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+  .app {
+    padding: 40px 16px;
+  }
+
+  .timer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .timer-card {
+    padding: 24px;
+  }
+
+  .time-display {
+    margin-top: 35px;
+  }
+}
+
+@media (max-width: 430px) {
+  .input-row {
+    flex-wrap: wrap;
+  }
+
+  .time-input {
+    min-width: 100px;
+  }
+
+  .set-button {
+    flex: 1;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .secondary-button {
+    width: 100%;
+  }
+}
